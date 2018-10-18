@@ -1,7 +1,7 @@
-// var querystring = require("querystring");
-// var url = require('url');
-// var mime = require('mime');
-// var fs = require('fs');
+// let querystring = require("querystring");
+// let url = require('url');
+// let mime = require('mime');
+// let fs = require('fs');
 
 
 /*
@@ -51,7 +51,7 @@ Router.prototype = {
 
     // web-server
     // {url: '/web', path: './dist/client'}
-    web: function (routes) {
+    web: function (routes, webRoot) {
 
         // 경로로 전달됨
         if (typeof routes === 'string') {
@@ -59,7 +59,7 @@ Router.prototype = {
         }
 
         routes.forEach((route) => {
-            const actualPath = path.resolve(global.ROOT.web, route.path);
+            const actualPath = path.resolve(webRoot, route.path);
             this._router.use(route.url, serveStatic(actualPath, route.config || defaultConfig));
         });
         return this;
@@ -67,36 +67,40 @@ Router.prototype = {
 
     // api-server
     // 'all', 'get', 'post', 'put', 'delete'
-    api: function (routes) {
+    api: function (routes, apiRoot) {
 
         // 경로로 전달됨
         if (typeof routes === 'string') {
             routes = require(path.resolve(routes));
         }
 
+        const method = ['all', 'get', 'post', 'put', 'delete'];
+        // router[name] : function (req, res, next) {}
+        let createRoute = (route, router)=>{
+            method.forEach((name)=>{
+                if(name in router){
+                    route[name](router[name]);
+                }
+            });
+        };
+
         routes.forEach((route) => {
-            this._router.route(route.url)
-                .all(function (req, res, next) {
-                    if (route.all) route.all(req, res, next);
-                    // next();
-                })
-                .get(function (req, res, next) {
-                    if (route.get) route.get(req, res, next);
-                    // res.json(req);
-                })
-                .put(function (req, res, next) {
-                    // req.user.name = req.params.name;
-                    if (route.put) route.put(req, res, next);
-                    // res.json(req);
-                })
-                .post(function (req, res, next) {
-                    if (route.post) route.post(req, res, next);
-                    // next(new Error('not implemented'));
-                })
-                .delete(function (req, res, next) {
-                    if (route.delete) route.delete(req, res, next);
-                    // next(new Error('not implemented'));
-                });
+
+            // 처리 메서드가 직접 전달된 경우
+            if(!route.path){
+                createRoute(this._router.route(route.url), route);
+                return;
+            }
+
+            // route.path : 파일 경로로 전달된 경우
+            let children = require(path.resolve(apiRoot, route.path));
+            for(let pattern in children){
+                let childURL = (route.url + pattern).replace(/(\/\/|\\\\)/g, '/');
+                let childRoute = this._router.route(childURL);
+                let childRouter = children[pattern];
+                createRoute(childRoute, childRouter);
+                console.log('routeFunction : ', childURL, childRouter);
+            }
         });
 
         return this;
@@ -105,7 +109,7 @@ Router.prototype = {
     // app.use('/app', this._router);
     run: function () {
 
-        // var logger = require('morgan');
+        // let logger = require('morgan');
         // this._router.use(logger());
 
         // 404 Page
@@ -122,7 +126,7 @@ Router.prototype = {
 function res_404(req, res, next) {
 
     console.log("# 404 Not found");
-    var content = "<h1>404 Not found</h1>READ FILE ERROR: Internal Server Error!";
+    let content = "<h1>404 Not found</h1>READ FILE ERROR: Internal Server Error!";
 
     res.writeHead(404, 'text/html');
     res.write(content);

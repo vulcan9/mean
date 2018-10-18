@@ -1,16 +1,17 @@
 {
-  "name": "server",
+  "name": "mean-server",
   "version": "1.0.0",
   "description": "API 서버 구현",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js",
+    "build": ""
   },
   "author": "vulcan9 <pdi1066@naver.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "commander": "^2.19.0",
     "cors": "^2.8.4",
     "express": "^4.16.4",
     "mongoose": "^5.3.4",

@@ -5,7 +5,7 @@ module.exports = [
     {
         // 호출할 가상 URL
         url: '/dev',
-        path: 'global.ROOT.web 에서 상대 경로',
+        path: 'ENV.web.root 위치에 대한 상대 경로',
         config: {
             // dotfiles: 'deny',
             // extensions : ['js']
