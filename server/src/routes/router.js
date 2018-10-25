@@ -99,7 +99,7 @@ Router.prototype = {
                 let childRoute = this._router.route(childURL);
                 let childRouter = children[pattern];
                 createRoute(childRoute, childRouter);
-                console.log('routeFunction : ', childURL, childRouter);
+                // console.log('routeFunction : ', childURL, childRouter);
             }
         });
 

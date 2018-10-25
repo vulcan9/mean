@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": ""
+    "build": "webpack index.js bundle.js -p"
   },
   "author": "vulcan9 <pdi1066@naver.com>",
   "license": "MIT",
