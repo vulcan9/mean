@@ -22,24 +22,31 @@ app.use(cors());
 // Router
 require('./routes/router.service').set(app);
 
+// run  sever
+(async function(){
+    await run_database();
+    await run_server();
+    console.log('------------------------------------------------------');
+})();
+
 //////////////////////////////////////////////
 // SERVER
 //////////////////////////////////////////////
 
-(async function(){
-    await databaseRun();
-    serverRun();
-})();
-
 // DB server: 'mongodb://localhost:27017/test'
-function databaseRun(){
+function run_database(){
     return require('./database/db.service')
-        .set(env.db);
+        .set(app);
 }
 
-function serverRun(){
-    const server = app.listen(env.web.port, env.web.host, function () {
-        console.log(`Server running at http://${env.web.host}:${env.web.port}/`);
+function run_server(){
+    console.log(`'* Run Server : http://${env.web.host}:${env.web.port}/`);
+    return new Promise(function(resolve, reject) {
+
+        const server = app.listen(env.web.port, env.web.host, function () {
+            console.log('\t- Server is running');
+            resolve(server);
+        });
+
     });
-    return server;
 }
