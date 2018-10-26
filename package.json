@@ -8,7 +8,10 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "server": "nodemon server --dev"
+        "(x) server:build": "cd server && npm run build",
+        "(x) server:watch": "cd server && npm run watch",
+        "(x) server:run": "cd dist/server && nodemon index.js --config=./server/runtime/server.config.js",
+        "server": "nodemon server --config=./runtime/server.config.js"
     },
     "private": true,
     "dependencies": {
@@ -48,6 +51,8 @@
         "tsickle": ">=0.29.0",
         "tslib": "^1.9.0",
         "tslint": "~5.11.0",
-        "typescript": "~2.9.2"
+        "typescript": "~2.9.2",
+        "webpack": "^4.23.0",
+        "webpack-cli": "^3.1.2"
     }
 }

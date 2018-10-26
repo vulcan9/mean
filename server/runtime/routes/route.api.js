@@ -12,8 +12,6 @@ module.exports = [
     },
     //*/
 
-    // path : /user 호출을 처리하는 함수를 구현한 user.js 파일 경로
-    // ENV.api.root 위치에 대한 상대 경로 (./user.js)
-    {url: '/', path: './default'},
-    {url: '/crud', path: './crud.sample'}
+    {url: '/', routes: require('../api/default')},
+    {url: '/crud', routes: require('../api/crud.sample')}
 ];

@@ -26,17 +26,16 @@ node index.js -h
     const ENV = app.get('ENV');
 
     // web-server 설정
-    const router_web = routerModule.get().web(
-        ENV.server.root + '/routes/route.web',
-        ENV.web.root
-    ).run();
+    const router_web = routerModule.get()
+        .web(ENV.web.routes, ENV.web.root)
+        .run();
     app.use('/web', router_web);
     
     // api-server 설정
-    const router_api = routerModule.get().api(
-        ENV.server.root + '/routes/route.api',
-        ENV.api.root
-    ).run();
+    const router_api = routerModule.get()
+        .api(ENV.api.routes)
+        .run();
+
     app.use('/api', router_api);
     
     // 기타 middleware 설정
@@ -45,7 +44,18 @@ node index.js -h
 ```
  
 ## web server router 설정
-`routes/route.web.js` 파일 참고
+`routes/sample/route.web.js` 파일 참고
  
 ## api server router 설정
-`routes/route.api.js` 파일 참고
+`routes/sample/route.api.js` 파일 참고
+
+
+
+
+
+
+
+
+
+
+

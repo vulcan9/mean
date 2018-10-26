@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "API 서버 구현",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "node index.js",
-    "build": "webpack index.js bundle.js -p"
+    "(x) build": "webpack -p --mode=production",
+    "(x) watch": "webpack -w --mode=development",
+    "server": "nodemon index.js --config=./runtime/server.config.js"
   },
-  "author": "vulcan9 <pdi1066@naver.com>",
-  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
     "commander": "^2.19.0",
@@ -16,5 +16,9 @@
     "express": "^4.16.4",
     "mongoose": "^5.3.4",
     "nodemon": "^1.18.4"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "vulcan9 <pdi1066@naver.com>",
+  "license": "MIT"
 }

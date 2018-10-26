@@ -1,5 +1,5 @@
-const express = require('express');
 // const path = require('path');
+const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -29,7 +29,7 @@ require('./routes/router.service').set(app);
 // SERVER
 //////////////////////////////////////////////
 
-const server = app.listen(env.web.port, function(){
-  console.log('Server Listening on port ' + env.web.port);
+const server = app.listen(env.web.port, env.web.host, function () {
+    console.log(`Server running at http://${env.web.host}:${env.web.port}/`);
 });
 

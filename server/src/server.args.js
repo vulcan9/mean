@@ -9,20 +9,17 @@ module.exports.get = get;
 //////////////////////////////////////////////
 
 // Automated --help
-// node server.js -h
+// node src/server.js -h
+// nodemon ./server
 
-function get(){
+function get() {
     args.version('0.0.1', '-v, --version')
-        .option('--dev', 'develop mode.', false)
 
         // web server
         .option('-p, --port <number>', 'server port.', 4000)
-        .option('-r, --root <path>', 'web 서비스 root folder.', '../dist')
-        .option('-c, --config <path>', 'config 파일 경로.', './env/server.config.prod')
+        .option('-c, --config <path>', 'config 파일 경로.')
 
         // DB
-        // .option('--db-protocol <protocol>', 'db protocol.', 'mongodb')
-        // .option('--db-host <host>', 'db host.', 'localhost')
         .option('--db-port <path>', 'db port.')
         .option('--db-name <name>', 'db name.')
 
@@ -32,29 +29,38 @@ function get(){
     // Merge
     //--------------
 
-    const isDevelop = Boolean(args.dev);
-    const configDefault = require('./env/server.config.default');
-    const userConfig = args.config ? require(args.config) : (isDevelop ? require('./env/server.config.prod') : {});
-    var config = Object.assign({}, configDefault, userConfig, {isDevelop: isDevelop});
+    // const isDevelop = Boolean(process.env.NODE_ENV === undefined);
+    // if (isDevelop) {
+    //     console.log('* 서버 환경 : Original 소스');
+    // } else {
+    //     console.log('* 서버 환경 : Compiled 소스(', process.env.NODE_ENV, ')');
+    // }
+
+    const configDefault = require('./server.config.default');
+
+    let userConfig;
+    if (args.config) {
+        const configFile = path.resolve(__dirname, '../', args.config);
+        console.log('* 설정 파일 : ', configFile);
+        userConfig = require(configFile);
+    } else {
+        console.log('* 설정 파일 : default');
+        userConfig = {};
+    }
+    var config = Object.assign({}, configDefault, userConfig);
 
     //--------------
     // args 적용
     //--------------
 
-    if(args.port) config.web.port = args.port;
+    if (args.port) config.web.port = args.port;
 
-    // path를 절대경로로 변환
-    config.server.root = path.resolve(__dirname, config.server.root || './');
-    config.web.root = path.resolve(__dirname, config.web.root || './');
-    config.api.root = path.resolve(__dirname, config.api.root || './');
+    console.log('\t- server.root : ', config.server.root);
+    console.log('\t- web.root : ', config.web.root);
 
     // DB
-    if(args.dbPort) config.db.port = args.dbPort;
-    if(args.dbName) config.db.name = args.dbName;
-
-    // console.log('  - develop : ', args.dev);
-    // console.log('  - port : ', args.port);
-    // console.log('  - root : ', args.root);
+    if (args.dbPort) config.db.port = args.dbPort;
+    if (args.dbName) config.db.name = args.dbName;
 
     // console.log('  - db protocol : ', args.dbProtocol);
     // console.log('  - db host : ', args.dbHost);
@@ -63,8 +69,3 @@ function get(){
 
     return config;
 }
-
-// function bool(val, def){
-//     console.log('  - bool : ', val, def);
-//     return (val === undefined) ? true : val;
-// }

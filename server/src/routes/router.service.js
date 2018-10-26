@@ -4,25 +4,33 @@ module.exports.set = function (app) {
     const ENV = app.get('ENV');
 
     //------------
-    // web-server
-    //------------
-
-    const router_web = routerModule.get().web(
-        ENV.server.root + '/routes/route.web',
-        ENV.web.root
-    ).run();
-    app.use('/web', router_web);
-    console.log('Web Page : ', '~/web/index.html');
-
-    //------------
     // api-server
     //------------
 
-    const router_api = routerModule.get().api(
-        ENV.server.root + '/routes/route.api',
-        ENV.api.root
-    ).run();
-    app.use('/api', router_api);
+    if(ENV.api){
+        const router_api = routerModule.get()
+            .api(ENV.api.routes)
+            .run();
+
+        var requestUrl = ENV.api.url || '';
+        app.use(requestUrl, router_api);
+
+        console.log(`* REST API : http://${ENV.api.host}:${ENV.api.port + requestUrl}`);
+    }
+
+    //------------
+    // web-server
+    //------------
+
+    if(ENV.web){
+        var requestUrl = ENV.web.url || '';
+        console.log(`* WEB : http://${ENV.web.host}:${ENV.web.port + requestUrl}`);
+
+        const router_web = routerModule.get()
+            .web(ENV.web.routes, ENV.web.root)
+            .run();
+        app.use(requestUrl, router_web);
+    }
 
     //------------
     // 404 Page

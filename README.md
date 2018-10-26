@@ -1,12 +1,20 @@
 # mean
 reactive mean stack boilerplate
 
+### app 빌드
 ```
-// app 빌드
-npm run build
+npm run build [프로젝트명]
+```
+
+### 서버 실행
+```
 // web, api 서버 시작
 npm run server
+// 또는
+cd server
+npm run server
 ```
+server/runtime 폴더에서 기능 확장
 
 
 - [멀티 프로젝트 생성 및 실행 테스트](./_doc/multi-project.md)

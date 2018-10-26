@@ -15,7 +15,7 @@ module.exports = {
                 }
             });
             */
-            res.json({result: 'susses!'});
+            res.json({result: 'susses!!'});
         }
     },
 
