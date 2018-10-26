@@ -8,13 +8,13 @@ module.exports.set = function (db) {
     console.log('* DB Server : ', db_server);
 
     mongoose.Promise = global.Promise;
-    mongoose.connect(db_server, { useNewUrlParser: true })
+    return mongoose.connect(db_server, { useNewUrlParser: true })
         .then(
             () => {
-                console.log('Database is connected')
+                console.log('\t- Database is connected')
             },
             err => {
-                console.log('Can not connect to the database' + err)
+                console.log('\t- Can not connect to the database' + err)
             }
         );
 };

@@ -63,8 +63,6 @@ Router.prototype = {
     },
 
     web: function (routes, webRoot) {
-        console.log('__dirname : ', __dirname);
-
         routes.forEach((route) => {
             const actualPath = path.resolve(webRoot, route.path);
             console.log('\t', route.url, ' : ', actualPath);
