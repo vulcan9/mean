@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "scripts": {
         "ng": "ng",
-        "serve": "ng serve -o",
+        "serve": "ng serve",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
@@ -11,8 +11,8 @@
         "SERVER & DB": "-------------------------------------------------",
         "(x) server:build": "cd server && npm run build",
         "(x) server:watch": "cd server && npm run watch",
-        "(x) server:run": "cd dist/server && nodemon index.js --config=./server/runtime/server.config.js",
-        "server": "nodemon server --config=./runtime/server.config.js",
+        "(x) server:run": "cd dist/server && nodemon index.js --config=./server/custom/server.config.js",
+        "server": "nodemon server --config=./custom/server.config.js",
         "개발 환경 (ProcFile)": "---------------------------------------",
         "start": "nf start"
     },

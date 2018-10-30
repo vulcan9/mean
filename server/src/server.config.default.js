@@ -16,6 +16,7 @@ module.exports = {
         host: '127.0.0.1',
         // 웹서비스 폴더 위치
         root: path.resolve(__dirname, '../../dist'),
+        // angular에서 지정된 router 경로는 직접 접근할 수 없음(App 로딩 후 접근해야함) 
         url: '/web',
         routes: require('./routes/sample/route.web')
     },

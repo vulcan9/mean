@@ -7,7 +7,7 @@
   "scripts": {
     "(x) build": "webpack -p --mode=production",
     "(x) watch": "webpack -w --mode=development",
-    "server": "nodemon index.js --config=./runtime/server.config.js"
+    "server": "nodemon index.js --config=./custom/server.config.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

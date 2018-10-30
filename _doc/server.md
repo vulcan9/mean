@@ -6,7 +6,7 @@ nodemon server
 nodemon server/index.js
 
 // 설정파일 로드할때
-nodemon server --config=./runtime/server.config.js
+nodemon server --config=./extends/server.config.js
 ```
  
 ### 서버 구동 옵션 보기
