@@ -40,6 +40,13 @@ ng build (--base-href ./ --prod --output-path dist/_client/web)
 ```
 ng generate library shared (--entry-file shared)
 ```
+shared 라이브러리에서 ng 명령 실행하기
+```
+cd projects/shared
+// user.component 파일 생성
+ng g c src/lib/user (--spec=false)
+// sharedModule에 자동으로 userComponent 추가됨
+```
 
 ##### build
 build 결과 위치는 ng-package.json 파일에 설정됨
