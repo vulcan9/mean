@@ -43,14 +43,14 @@ node index.js -h
     app.use('/', routerModule.get().run());
 ```
  
-## web server router 설정
+### web server router 설정
 `routes/sample/route.web.js` 파일 참고
  
-## api server router 설정
+### api server router 설정
 `routes/sample/route.api.js` 파일 참고
 
-
-
+### 설정 파일
+`server.config.default.js` 파일 참고
 
 
 

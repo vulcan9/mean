@@ -14,7 +14,9 @@ npm run server
 cd server
 npm run server
 ```
-server/runtime 폴더에서 기능 확장
+
+
+
 
 
 - [멀티 프로젝트 생성 및 실행 테스트](./_doc/multi-project.md)
