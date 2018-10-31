@@ -19,7 +19,7 @@ export const routes: Routes = [
             {path: '**', component: UserComponent},
         ]
     },
-    {path: '**', component: Page404Component},
+    // {path: '**', component: Page404Component},
 ];
 
 // https://medium.com/@ozgurgul/angular-6-login-and-router-tutorial-ac5fc5d3027f
@@ -27,3 +27,6 @@ export const routes: Routes = [
 
 // http://jasonwatmore.com/post/2018/05/16/angular-6-user-registration-and-login-example-tutorial
 // https://stackblitz.com/edit/angular-6-registration-login-example
+
+// JWT
+// https://poiemaweb.com/angular-jwt-authentication

@@ -1,11 +1,26 @@
 import {Routes} from '@angular/router';
-import {UserComponent} from '../../../shared/src/lib/user/user.component';
+import {PageHomeComponent} from '../../../shared/src/lib/pages/page-home.component';
 
+
+export const routerOption = {
+    // enableTracing: true,
+    // onSameUrlNavigation: 'reload'
+};
 
 export const routes: Routes = [
-    {
-        // ~/user
-        path: 'user',
-        component: UserComponent
-    }
+    // {path: '', component: PageHomeComponent},
+    // {
+    //     // ~/user
+    //     path: 'user',
+    //     component: UserComponent,
+    //     children: []
+    // },
+    // {
+    //     path: '',
+    //     component: AppComponent,
+    //     canActivate: [AuthGuard],
+    //     canActivateChild: [AuthGuard],
+    //     children: []
+    // },
+    // { path: '**', component: PageHomeComponent }
 ];

@@ -44,7 +44,7 @@ shared 라이브러리에서 ng 명령 실행하기
 ```
 cd projects/shared
 // user.component 파일 생성
-ng g c src/lib/user (--spec=false)
+ng g c src/lib/user (--spec=false --skip-import)
 // sharedModule에 자동으로 userComponent 추가됨
 ```
 

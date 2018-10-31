@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../../../shared/src/lib/shared.module';
 
-import {routes} from './app.routes';
+import {routerOption, routes} from './app.routes';
 import {AppComponent} from './app.component';
 
 @NgModule({
@@ -14,7 +14,7 @@ import {AppComponent} from './app.component';
     imports: [
         BrowserModule,
         SharedModule,
-        RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}),
+        RouterModule.forRoot(routes, routerOption),
     ],
     providers: [],
     bootstrap: [AppComponent]

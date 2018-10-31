@@ -3,16 +3,18 @@
     "version": "0.0.1",
     "scripts": {
         "ng": "ng",
-        "serve": "ng serve",
+        "serve": "ng serve --host 0.0.0.0",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
+
         "SERVER & DB": "-------------------------------------------------",
         "(x) server:build": "cd server && npm run build",
         "(x) server:watch": "cd server && npm run watch",
         "(x) server:run": "cd dist/server && nodemon index.js --config=./server/custom/server.config.js",
         "server": "nodemon server --config=./custom/server.config.js",
+
         "개발 환경 (ProcFile)": "---------------------------------------",
         "start": "nf start"
     },
