@@ -6,12 +6,16 @@
         <li><a routerLink="/" class="nav-link" routerLinkActive="selected">Home</a></li>
         <li><a routerLink="/auth" class="nav-link" routerLinkActive="selected">Auth</a></li>
         <li><a routerLink="/user/id" class="nav-link" routerLinkActive="selected">User/id</a></li>
-        <li><a routerLink="/user/id/abc" class="nav-link" routerLinkActive="selected">User/id/abc</a></li>
+        <li><a routerLink="/user/id:abc" class="nav-link" routerLinkActive="selected">User/id:abc</a></li>
     </ul>
 
 
 
     <!-- App Routeing -->
     <router-outlet></router-outlet>
+
+    <use-page404></use-page404>
+    <use-auth></use-auth>
+    <use-user></use-user>
 </div>
 

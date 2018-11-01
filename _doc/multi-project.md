@@ -11,6 +11,8 @@ cd mean
 ng g app client --routing
 npm install
 
+//-----------------------------
+
 // ALWAYS: Use a prefix when generating a library (default : lib)
 // prefix는 angular.json 에 기록됨
 ng g lib auth --routing --prefix=use
@@ -29,11 +31,19 @@ ng g c user —-project=auth
 export * from './lib/user/user.component';
 declarations: [..., UserComponent],
 
+// import 하여 사용
+// ALWAYS: In your test application import using your library by name and NOT the individual files.
 
+//-----------------------------
 
+// shared 라이브러리 추가
+ng g lib shared --prefix=use
+ng g c pages/page404 --flat --prefix=use --project=shared
 
+// 이후 npm에 배포하여 사용할 수 있다.
+(npm publish)
 
-
+//-----------------------------
 
 // 서버 Publish 환경 테스트 (App 빌드 해야 소스 갱신됨)
 cd server

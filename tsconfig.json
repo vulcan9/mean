@@ -23,6 +23,12 @@
       ],
       "auth/*": [
         "dist/auth/*"
+      ],
+      "shared": [
+        "dist/shared"
+      ],
+      "shared/*": [
+        "dist/shared/*"
       ]
     }
   }
