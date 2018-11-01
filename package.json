@@ -1,6 +1,7 @@
 {
     "name": "mean",
     "version": "0.0.1",
+    "private": true,
     "scripts": {
         "ng": "ng",
         "serve": "ng serve --host 0.0.0.0",
@@ -20,7 +21,6 @@
         "dev.2": "ng serve",
         "start": "nf start"
     },
-    "private": true,
     "dependencies": {
         "@angular/animations": "~7.0.0",
         "@angular/common": "~7.0.0",
