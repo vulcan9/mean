@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-user',
+  selector: 'use-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })

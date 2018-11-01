@@ -1,11 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {RouterModule} from '@angular/router';
-import {SharedModule} from '../../../shared/src/lib/shared.module';
-
-import {routerOption, routes} from './app.routes';
+import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import {AuthModule} from 'auth';
 
 @NgModule({
     declarations: [
@@ -13,8 +11,8 @@ import {AppComponent} from './app.component';
     ],
     imports: [
         BrowserModule,
-        SharedModule,
-        RouterModule.forRoot(routes, routerOption),
+        AppRoutingModule,
+        AuthModule
     ],
     providers: [],
     bootstrap: [AppComponent]

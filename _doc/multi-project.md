@@ -1,4 +1,49 @@
 ## 멀티 프로젝트 생성 및 실행 테스트
+
+프로젝트 생성 개요 (application + library)
+```
+// angular 7 환경으로 설치
+npm install -g @angular/cli
+
+// routing, scss 사용함
+ng new mean (--routing --skip-install --create-application=false)
+cd mean
+ng g app client --routing
+npm install
+
+// ALWAYS: Use a prefix when generating a library (default : lib)
+// prefix는 angular.json 에 기록됨
+ng g lib auth --routing --prefix=use
+
+// library 빌드된 결과를 app에서 사용하므로 
+// 라이브러리를 먼저 컴파일해야 application이 컴파일 됨.
+// terminal 1 watch
+ng build auth --watch
+// terminal 2 watch
+ng serve -o
+
+// auth 수정
+ng g c user —-project=auth
+// tsconfig.json에 컴파일 경로(paths) 추가됨
+// 배포 목록은 public_api.ts, auth.module에 각각 수동으로 추가 해야함.
+export * from './lib/user/user.component';
+declarations: [..., UserComponent],
+
+
+
+
+
+
+
+// 서버 Publish 환경 테스트 (App 빌드 해야 소스 갱신됨)
+cd server
+npm install
+cd ..
+npm run server
+// index.html 수정 : <base href="./">
+// 접속 테스트 : http://127.0.0.1:4000/web
+```
+
 #### angular workspace  설정
 package.json 파일과 angula.json 파일은 angular 프로젝트 생성시 만들어지는 파일의 내용과 같다.
 1. package.json 파일
@@ -46,6 +91,8 @@ cd projects/shared
 // user.component 파일 생성
 ng g c src/lib/user (--spec=false --skip-import)
 // sharedModule에 자동으로 userComponent 추가됨
+
+(ng g c user —-project=shared)
 ```
 
 ##### build
