@@ -13,7 +13,7 @@
         "(x) server:watch": "cd server && npm run watch",
         "(x) server:run": "cd dist/server && nodemon index.js --config=./server/custom/server.config.js",
         "server": "nodemon server --config=./custom/server.config.js",
-        "개발 환경 (ProcFile)": "---------------------------------------",
+        "개발 환경 (ProcFile 아직 사용안함 - 실행 시퀀스 안맞음)": "---------------------------------------",
         "(x) develop": "각각 실행해야함 (build 순서 있음, watching)",
         "dev.0": "ng build shared --watch",
         "dev.1": "ng build auth --watch",
