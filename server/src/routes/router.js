@@ -51,10 +51,17 @@ Router.prototype = {
     _router: undefined,
 
     // app.use('/app', this._router);
-    run: function () {
+    run: function (redirectURL) {
 
         // let logger = require('morgan');
         // this._router.use(logger());
+
+        // not found 페이지 대체
+        if(redirectURL !== undefined){
+            this._router.get('*', function(req, res, next){
+                res.redirect(redirectURL);
+            });
+        }
 
         // 404 Page
         this._router.all('*', res_404);

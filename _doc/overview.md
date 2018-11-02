@@ -32,9 +32,11 @@ ng g lib auth --routing --prefix=use
 ng g lib shared --prefix=use
 ```
 
-shared 라이브러리에 컴포넌트 추가
+shared 라이브러리에 컴포넌트 추가 (--prefix=use 는 자동으로 설정됨)
 ```
-ng g c pages/page404 --flat --prefix=use --project=shared
+ng g c pages/page-not-found --project=shared (--flat --spec=false --inline-style --inline-template)
+// selector 사용 : <use-page-not-found></use-page-not-found>
+// 컴포넌트 클래스 : PageNotFoundComponent
 ```
 
 ### 실행

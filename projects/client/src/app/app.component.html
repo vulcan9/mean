@@ -5,23 +5,31 @@
     <ul>
         <li><a routerLink="/" class="nav-link" routerLinkActive="selected">Home</a></li>
 
+        <!--<li><a routerLink="/login" class="nav-link" routerLinkActive="selected">Login</a></li>-->
         <li><a routerLink="/auth" class="nav-link" routerLinkActive="selected">Auth</a></li>
         <li><a routerLink="/authdvsdfgbrf" class="nav-link" routerLinkActive="selected">Auth*</a></li>
 
-        <li><a routerLink="/user/id" class="nav-link" routerLinkActive="selected">User/id</a></li>
-        <li><a routerLink="/user/id:abc" class="nav-link" routerLinkActive="selected">User/id:abc</a></li>
-        <li><a routerLink="/user/idfsbgfdhbtr" class="nav-link" routerLinkActive="selected">User/id*</a></li>
+        <li><a routerLink="/user" class="nav-link" routerLinkActive="selected">User</a></li>
+        <li><a routerLink="/user/:id" class="nav-link" routerLinkActive="selected">/user/:id</a></li>
+        <li><a routerLink="/user/id:abc" class="nav-link" routerLinkActive="selected">/user/id:abc</a></li>
+        <li><a routerLink="/user/17" class="nav-link" routerLinkActive="selected">/user/id:17</a></li>
+        <li><a [routerLink]="['/user', 12]" class="nav-link" routerLinkActive="selected">['/user', 12]</a></li>
+
+        <li><a [routerLink]="[{ outlets: { popup: ['app'] } }]" class="nav-link" routerLinkActive="selected">popup:app</a></li>
+        <!--<li><a [routerLink]="[{ outlets: { popup: ['null'] } }]" class="nav-link" routerLinkActive="selected">popup:null</a></li>-->
     </ul>
 
 
 
     <!-- App Routeing -->
     <router-outlet></router-outlet>
-
+    <router-outlet name="popup"></router-outlet>
     <!--
     <use-page404></use-page404>
     <use-auth></use-auth>
     <use-user></use-user>
     -->
+
+    빌드 후 router :id 작동 안함
 </div>
 

@@ -3,4 +3,5 @@
  */
 
 export * from './lib/shared.module';
-export * from './lib/pages/page404.component';
+export * from './lib/pages/page-not-found.component';
+export * from './lib/pages/page-empty.component';

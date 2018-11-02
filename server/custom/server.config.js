@@ -17,7 +17,8 @@ module.exports = {
         // 웹서비스 폴더 위치
         root: path.resolve(__dirname, '../../dist'),
         url: '/web',
-        routes: require('./routes/route.web')
+        routes: require('./routes/route.web'),
+        notFound: '/web'
     },
 
     // API 서비스

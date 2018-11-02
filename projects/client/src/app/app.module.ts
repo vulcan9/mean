@@ -11,10 +11,12 @@ import {AppComponent} from './app.component';
     declarations: [
         AppComponent,
     ],
+    // routing든 모듈 로드 순서에 따라 달라짐
     imports: [
         BrowserModule,
+        SharedModule,
+        AuthModule,
         AppRoutingModule,
-        SharedModule, AuthModule
     ],
     providers: [],
     bootstrap: [AppComponent]

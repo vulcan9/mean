@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import {AuthComponent, UserComponent} from 'auth';
-import {Page404Component} from 'shared';
+import {PageNotFoundComponent, PageEmptyComponent} from 'shared';
 
 const routerOption = {
     // enableTracing: true,
@@ -10,40 +9,18 @@ const routerOption = {
 };
 
 const routes: Routes = [
+    {path: 'app', component: PageEmptyComponent, outlet: 'popup'},
 
-    {
-        path: '',
-        // redirectTo: '/user', pathMatch: 'full',
-        component: Page404Component
-        // children: [
-        //     {path: '**', component: Page404Component},
-        // ]
-    },
-
-    {path: 'auth', component: AuthComponent},
-
-    {
-        // ~/user
-        path: 'user',
-        // component: UserComponent,
-        // canActivate: [AuthGuard],
-        children: [
-            { path: '', component: UserComponent },
-            // { path: ':id', component: UserComponent },
-            // {path: '**', component: UserComponent},
-        ]
-    },
-    { path: 'user/:id', component: UserComponent },
-
-    {path: '**', component: Page404Component},
-
+    {path: '', redirectTo: '/app', pathMatch: 'full'},
+    {path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, routerOption)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, routerOption)],
+    exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
 
 // https://medium.com/@ozgurgul/angular-6-login-and-router-tutorial-ac5fc5d3027f
 // https://www.a-mean-blog.com/ko/blog/Angular-2/%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/Guard%EB%A1%9C-%EB%B9%84%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%A0%91%EA%B7%BC%EC%A0%9C%ED%95%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0

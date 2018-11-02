@@ -19,7 +19,7 @@
         "(x) develop": "각각 실행해야함 (build 순서 있음, watching)",
         "dev.0": "ng build shared --watch",
         "dev.1": "ng build auth --watch",
-        "dev.2": "ng serve",
+        "dev.2": "ng serve -o",
         "start": "nf start"
     },
 

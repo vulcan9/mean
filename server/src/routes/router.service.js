@@ -28,7 +28,7 @@ module.exports.set = function (app) {
 
         const router_web = routerModule.get()
             .web(ENV.web.routes, ENV.web.root)
-            .run();
+            .run(ENV.web.notFound);
         app.use(requestUrl, router_web);
     }
 
