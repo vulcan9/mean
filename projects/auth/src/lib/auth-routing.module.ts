@@ -12,17 +12,17 @@ const routes: Routes = [
     {
         path: 'user', component: UserComponent,
         // canActivate: [AuthGuard]
-        children: [
-            {
-                path: '', component: UserComponent,
-                children: [
-                    {path: ':id', component: UserComponent},
-                    {path: '', component: UserComponent}
-                ]
-            }
-        ]
+        // children: [
+        //     {
+        //         path: '', component: UserComponent,
+        //         children: [
+        //             {path: ':id', component: UserComponent},
+        //             {path: '', component: UserComponent}
+        //         ]
+        //     }
+        // ]
     },
-    // {path: 'user/:id', component: UserComponent, data: {title: 'User List'}},
+    {path: 'user/:id', component: UserComponent, data: {title: 'User List'}},
 ];
 
 @NgModule({

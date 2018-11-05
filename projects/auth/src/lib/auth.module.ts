@@ -18,6 +18,7 @@ import { UserComponent } from './user/user.component';
         UserComponent
     ],
     exports: [
+        AuthRoutingModule,
         AuthComponent,
         UserComponent,
     ]
